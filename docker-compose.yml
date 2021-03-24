@@ -1,0 +1,21 @@
+version: '3'
+services:
+  api:
+    image: api
+    build: .
+    networks:
+      - backend
+    ports:
+      - "3000:3000"
+    environment:
+      MONGODB_URI: db
+
+
+  db:
+    image: mongo
+    networks:
+      - backend
+
+networks:
+    backend:
+      driver: bridge
